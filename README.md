@@ -107,7 +107,7 @@ Test and develop a `Post` and `Comment` class to represent the data seen on Hack
 
 
 ### Release 2: Hacker News HTML to Post and Comment Objects
-We've explored Nokogiri a bit and have designed `Post` and `Comment` classes.  Now it's time to take some Hacker News HTML and parse it into our Ruby objects.  To avoid repeatedly hitting the Hacker News servers and getting the DBC network temporarily banned, we'll start by scraping an HTML file that we've saved locally (see `html-samples/hacker-news-post.html`).  We will we move on to parsing live webpages once we're able to successfully parse the local file.
+We've explored Nokogiri a bit and have designed `Post` and `Comment` classes.  Now it's time to take some Hacker News HTML and parse it into our Ruby objects.  To avoid repeatedly hitting the Hacker News servers and getting the DBC network temporarily banned, we'll start by scraping an HTML file that we've saved locally (see `html-samples/hacker-news-post.html`).  We will move on to parsing live webpages once we're able to successfully parse the local file.
 
 We'll need an object to parse the HTML into our post and comment objects.  Do we already have an object that should have that responsibility?  Would it make sense to design a new object to do the parsing?  Let's ensure that we follow object-oriented principles and that we understand and can explain why we're making decisions.
 

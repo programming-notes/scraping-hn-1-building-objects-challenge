@@ -107,11 +107,13 @@ Test and develop a `Post` and `Comment` class to represent the data seen on Hack
 
 
 ### Release 2: Hacker News HTML to Post and Comment Objects
-We've explored Nokogiri a bit and have designed `Post` and `Comment` classes.  Now it's time to take some Hacker News HTML and parse it into our Ruby objects.  To avoid repeatedly hitting the Hacker News servers and getting the DBC network temporarily banned, we'll start by scraping an HTML file that we've saved locally (see `html-samples/hacker-news-post.html`).  We will we move on to parsing live webpages once we're able to successfully parse the local file.
+We've explored Nokogiri a bit and have designed `Post` and `Comment` classes.  Now it's time to take some Hacker News HTML and parse it into our Ruby objects.  To avoid repeatedly hitting the Hacker News servers and getting the DBC network temporarily banned, we'll start by scraping an HTML file that we've saved locally (see `html-samples/hacker-news-post.html`).  We will move on to parsing live webpages once we're able to successfully parse the local file.
 
 We'll need an object to parse the HTML into our post and comment objects.  Do we already have an object that should have that responsibility?  Would it make sense to design a new object to do the parsing?  Let's ensure that we follow object-oriented principles and that we understand and can explain why we're making decisions.
 
 We'll also want to test that our parsing is working as we expect.  Given a specific set of HTML, the object that does our parsing should create a post object with specific attributes (e.g. title, url, etc.).  The post should also have a specific set of comments.
+
+One of the challenges in parsing the Hacker News HTML will be how to extract the information that we need.  How do we grab the username of the post's author?  The Hacker News item ID?  How do we get nodes representing all of the comments?
 
 ```ruby
 # Assume the code in 'html-samples/hacker-news-post.html'
@@ -125,7 +127,7 @@ nokogiri_document.css('.title > a').first['href']
 ```
 *Figure 6*.  Pulling specific pieces of information from a Nokogiri document object.
 
-One of the challenges in parsing the Hacker News HTML will be how to extract the information that we need.  How do we grab the username of the post's author?  The Hacker News item ID?  How do we get nodes representing all of the comments?  Figure 6 shows some examples of pulling out pieces of information that we'll need to build our objects.  What does each line return?
+Each of the examples in Figure 6 pulls out a piece of information that we need to build our objects.  Looking at each css selector and subsequent method chaining, can we read through the HTML and identify which piece of information each example extracts?  Run each example to confirm our thoughts and then use each example in our parsing object.
 
 We'll need to figure out for ourselves how to get the rest of the information.  We should read through the HTML source code to figure out which selectors will lead us to the information we need.
 

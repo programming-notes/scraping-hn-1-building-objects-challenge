@@ -120,8 +120,8 @@ One of the challenges in parsing the Hacker News HTML will be how to extract the
 # has been parsed into a Nokogiri document object
 # and stored in the variable 'nokogiri_document'.
 
-nokogiri_document.css('.subtext > span:first-child').first.inner_text
-nokogiri_document.css('.subtext > a:nth-child(3)').first.attributes['href'].value
+nokogiri_document.css('.subtext > span:first-child').first.inner_text.slice(/\A\d*/)
+nokogiri_document.css('.subtext > span:first-child').first.attributes["id"].value.slice(/\d*\z/)
 nokogiri_document.css('.title > a').first.inner_text
 nokogiri_document.css('.title > a').first['href']
 ```
